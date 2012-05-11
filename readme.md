@@ -14,4 +14,4 @@ Planned features:
 * Progressive update of the view - render fast sketch first, update view as rendering proceeds
 * Multi-threading support for generators, rendering, copying - to take advantage of multi-core CPU:s.
 * Full undo-redo queue - stores operations, caches or re-generates image tiles
-
+* Rendering masks, protecting layer contents from change.
