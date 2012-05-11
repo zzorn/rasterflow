@@ -1,0 +1,7 @@
+.idea
+*.*~
+*.iml
+out/
+target/
+lib_managed/
+*.log
