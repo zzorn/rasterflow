@@ -22,13 +22,15 @@ trait Channel {
 
   /**
    * Returns the tile at the specified tile id.
+   * @param unmodified if true, retrieves the non-modified version of tiles if available, if false, always retrieves the most recent version of a tile.
    */
-  def getTile(tileId: TileId): Tile
+  def getTile(tileId: TileId, unmodified: Boolean = false): Tile
 
   /**
    * Returns the tile at the specified coordinates.
+   * @param unmodified if true, retrieves the non-modified version of tiles if available, if false, always retrieves the most recent version of a tile.
    */
-  final def getTileAt(canvasX: Int, canvasY: Int): Tile = getTile(TileId.forLocation(canvasX, canvasY))
+  final def getTileAt(canvasX: Int, canvasY: Int, unmodified: Boolean = false): Tile = getTile(TileId.forLocation(canvasX, canvasY), unmodified)
 
   /**
    * Returns the tile at the specified coordinates, ready for modification.

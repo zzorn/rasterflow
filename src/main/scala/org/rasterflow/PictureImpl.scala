@@ -1,6 +1,8 @@
 package org.rasterflow
 
 import change.{Changes, Change}
+import layer.Layer
+import operation.{Operation, OperationQueue}
 import tile.TileId
 import util.command.CommandQueue
 
@@ -11,7 +13,7 @@ class PictureImpl extends Picture {
 
   private var _layers: List[Layer] = Nil
 
-  private val commandQueue = new CommandQueue[PictureImpl](this)
+  private val operationQueue = new OperationQueue(this)
 
   def layer(name: Symbol): Option[Layer] = layers.find(_.identifier == name)
 
@@ -36,10 +38,14 @@ class PictureImpl extends Picture {
   }
 
 
+  def doOperation(operation: Operation[_ <: AnyRef, _ <: AnyRef]) {
+    operationQueue.doCommand(operation)
+  }
+
   /**
    * Retrieves the id:s of the tiles that need to be redrawn, and clears the dirty status at the same time.
    */
-  def getAndClearDirtyTiles(): Set[TileId] = {
+  def getAndClearDirtyTiles: Set[TileId] = {
     val tiles = dirtyTiles
     clearDirtyTiles()
     tiles

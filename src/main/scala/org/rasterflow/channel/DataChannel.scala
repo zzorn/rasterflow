@@ -45,7 +45,18 @@ final class DataChannel(val identifier: Symbol, val undoEnabled: Boolean = true)
     else _defaultTile = newDefaultTile
   }
 
-  def getTile(tileId: TileId): Tile = tiles.get(tileId).getOrElse(defaultTile)
+
+  def getTile(tileId: TileId, unmodified: Boolean) {
+    // Check if the specified tile was modified, and we want the unmodified version
+    if (unmodified && newTiles.contains(tileId)) {
+      // Get old tile or (old) default tile if no oldTile found for the location
+      oldTiles.get(tileId).getOrElse( if (oldDefaultTile == null) defaultTile else oldDefaultTile )
+    }
+    else {
+      // The current version is ok
+      tiles.get(tileId).getOrElse(defaultTile)
+    }
+  }
 
   def getTilesIn(area: Rectangle): Map[TileId, Tile] = {
     var result = Map[TileId, Tile]()
