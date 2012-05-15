@@ -69,7 +69,7 @@ trait Operation[UndoData <: AnyRef, RedoData <: AnyRef] {
    * Finishes redoing an undone action.  Called after start redo and all processTileAtRedo calls.
    * @return data object for undo.
    */
-  def endRedo(target: Picture, redoData: RedoData, affectedTiles: Set[TileId]): Set[TileId] = {
+  def endRedo(target: Picture, redoData: RedoData, affectedTiles: Set[TileId]): UndoData = {
     endOperation(target, affectedTiles)
   }
 

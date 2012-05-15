@@ -4,7 +4,6 @@ import change.{Changes, Change}
 import layer.Layer
 import operation.{Operation, OperationQueue}
 import tile.TileId
-import util.command.CommandQueue
 
 /**
  *

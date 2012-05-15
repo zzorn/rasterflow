@@ -7,7 +7,7 @@ import org.rasterflow.tile.{TileService, TileId}
 /**
  *
  */
-class OperationEntry(val picture: Picture, val operation: Operation) {
+class OperationEntry(val picture: Picture, val operation: Operation[_ <: AnyRef, _ <: AnyRef]) {
 
   private var undoData: AnyRef = null
   private var redoData: AnyRef = null
@@ -28,7 +28,7 @@ class OperationEntry(val picture: Picture, val operation: Operation) {
     }
 
     def processSubTask(tile: TileId) {
-      OperationEntry.this.operation.processTile(tile)
+      OperationEntry.this.operation.processTile(picture, tile)
     }
 
     def endTask() {

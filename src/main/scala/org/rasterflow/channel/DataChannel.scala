@@ -46,7 +46,7 @@ final class DataChannel(val identifier: Symbol, val undoEnabled: Boolean = true)
   }
 
 
-  def getTile(tileId: TileId, unmodified: Boolean) {
+  def getTile(tileId: TileId, unmodified: Boolean): Tile = {
     // Check if the specified tile was modified, and we want the unmodified version
     if (unmodified && newTiles.contains(tileId)) {
       // Get old tile or (old) default tile if no oldTile found for the location

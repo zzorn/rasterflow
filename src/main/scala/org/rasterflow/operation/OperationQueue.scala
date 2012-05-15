@@ -26,7 +26,7 @@ class OperationQueue(picture: Picture) {
       }
 
       // Create entry, and store it if requested
-      val entry = new OperationEntry(picture)
+      val entry = new OperationEntry(picture, operation)
       if (operation.storeInUndoQueue) {
         undoQueue ::= entry
       }

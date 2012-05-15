@@ -1,12 +1,8 @@
 package org.rasterflow.layer
 
-import util.Rectangle
-import org.rasterflow.util.Rectangle
-import org.rasterflow.channel.{Raster, Channel}
+import org.rasterflow.channel.Channel
 import org.rasterflow.tile.TileId
 import org.rasterflow.change.Change
-import org.rasterflow.{Picture, PictureImpl}
-import org.rasterflow.tasks.TileTask
 
 /**
  *
@@ -31,6 +27,6 @@ trait Layer {
 
   def takeUndoSnapshot(): Change
 
-//  def runOperation(operation: Operation)
+
 }
 

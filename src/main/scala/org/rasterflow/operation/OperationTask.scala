@@ -1,7 +1,7 @@
 package org.rasterflow.operation
 
-import com.sun.jmx.snmp.tasks.Task
 import org.rasterflow.tile.TileId
+import org.rasterflow.util.tasks.Task
 
 /**
  *
